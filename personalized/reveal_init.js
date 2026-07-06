@@ -20,7 +20,7 @@ Reveal.initialize({
     //     ]
     // },
     // Learn about plugins: https://revealjs.com/plugins/
-    plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3, RevealChalkboard, RevealCustomControls],
+    plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3, RevealChalkboard],
     // dependencies: [
     //     { src: '../reveal.js/plugin/accessibility/helper.js', async: true, condition: function() { 
     //     	return !!document.body.classList; 
