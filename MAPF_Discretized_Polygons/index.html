@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Coordinated Motion Planning is FPT on Discretized Simple Polygons</title>
+
+		<link rel="stylesheet" href="../feeblepoint2-main/feeble.css">
+		<link rel="stylesheet" href="../personalized/my_style.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/plugin/chalkboard/style.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins/menu/font-awesome/css/fontawesome.css">
+		<!-- <link rel="stylesheet" href="../reveal.js/plugin/customcontrols/style.css"> -->
+		<!-- <link rel="stylesheet" href="../reveal.js/plugin/accessibility/helper.css"> -->
+		<link id="main-stylesheet" rel="stylesheet" href="../reveal.js/dist/theme/solarized.css">
+		<!-- <link id="main-stylesheet" rel="stylesheet" href="../reveal.js/dist/theme/solarized.css"> -->
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="center">
+					<!-- <h3>CS1860: Mathematical Structures</h3> -->
+					<h2 class="frametitle">Coordinated Motion Planning is FPT on Discretized Simple Polygons</h2>
+					<div style="text-align: center;">
+						Eduard Eiben 
+						
+						<p>Royal Holloway, University of London</p>
+						<p>Joint work with 
+							Argyris Deligkas (Royal Holloway, University of London), 
+							 Robert Ganian (TU-Vienna)
+							 and Iyad Kanj (School of Computing, DePaul University)
+							<!-- , M.S. Ramanujan (University of Warwick) -->
+						</p>
+					</div>
+					
+					<!-- <p> -->
+						<!-- <small>Created by <a href="#">Eduard Eiben</a></small> -->
+					<!-- </p> -->
+					
+				</section>
+				<!-- <section id="motivation-problem-definition" class="slide level1">
+				<h1 style="text-align: center;">Motivation &amp; Problem Definition</h1>
+				</section> -->
+				<section><div class="frame">
+					<h3 data-id="title" class="frametitle"> Motivation
+					</h3>
+				<ol>
+				<li class="fragment"><p>Large Warehouses (e.g., Amazon) require efficient relocation of items</p></li>
+				<li class="fragment"><p>Amazon KIVA robots (2012)</p></li>
+				<li class="fragment"><p>Robots must move items to target locations without hitting other
+				robots</p></li>
+				<li class="fragment"><p>Robots can move simultaneously (in parallel)</p></li>
+				</ol>
+				</div>
+				</section><section><div class="frame">
+					
+				<video width="1024" height="576" controls>
+					<source src="video/robotex.mp4" type="video/mp4">
+					<!-- <source src="movie.ogg" type="video/ogg"> -->
+				  Your browser does not support the video tag.
+				  </video>
+				  <small>Source: <a href="https://www.youtube.com/watch?v=4sEVX4mPuto">https://www.youtube.com/watch?v=4sEVX4mPuto</a></small>
+			</div>
+
+			
+
+				</section>
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle">Coordinated Motion Planning (CMP)
+					</h3>
+				<!-- <p><span>Problem: Coordinated Motion Planning (CMP)</span></p> -->
+				<ul>
+				<li class="fragment"><p><span class="highlight-text-blue"><b>Input</b></span>: <span class="math inline">\(k\)</span> robots placed on a
+				graph $G$. <span class="fragment"> A robot $R_i$ has starting position $s_i$ and destination $t_i$.</span></p></li>
+				<li class="fragment"><p><span class="highlight-text-blue"><b>Dynamics</b></span>: In each time step, each robot may move along an edge provided that
+				there is no collision.</p></li>
+				<li class="fragment"><p><span class="highlight-text-blue"><b>Goal</b></span>: Find a schedule for the robots so as to minimize a certain
+				objective target such as:</p>
+				<ul>
+				<li class="fragment"><p><em class="highlight-text-red">Task-completion time (makespan):</em> schedule
+				length</p></li>
+				<li class="fragment"><p><em class="highlight-text-red">Total travel length or total energy</em>: The sum of the
+				trajectories’ lengths</p></li>
+				</ul></li>
+				</ul>
+				</div>
+				</section>
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle">Coordinated Motion Planning (CMP)
+					</h3>
+				<!-- <p><span>Problem: Coordinated Motion Planning (CMP)</span></p> -->
+				<ul>
+				<li><p><span class="highlight-text-blue"><b>Input</b></span>: <span class="math inline">\(k\)</span> robots placed on a
+				graph $G$. <span> A robot $R_i$ has starting position $s_i$ and destination $t_i$.</span></p></li>
+				<li><p><span class="highlight-text-blue"><b>Dynamics</b></span>: In each time step, each robot may move along an edge provided that
+				there is no collision.</p></li>
+				<li><p><span class="highlight-text-blue"><b>Goal</b></span>: In this talk we consider minimizing:</p>
+				<ul>
+				<li><p><em class="highlight-text-red">Total travel length or total energy</em>: The sum of the
+				trajectories’ lengths</p></li>
+				</ul></li>
+				</ul>
+				</div>
+				</section>
+				<section data-auto-animate data-auto-animate-duration=2.0>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+				<section data-auto-animate data-auto-animate-duration=2.0>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example1.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+
+				<section data-auto-animate data-auto-animate-duration=2.0>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example2.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example3.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example4.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example5.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example6.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example7.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">CMP: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/mapf_example8.svg" height="500px" alt="Running example of mapf">
+						
+					</div>				
+				</section>
+
+
+				<!-- <section id="background-significance-literature-review"
+				class="slide level1">
+				<h1 style="text-align: center;">Background, Significance &amp; Literature Review</h1>
+				</section> -->
+
+				<section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Background</span>	
+					</h3>
+				<ul>
+				<!-- <li class="fragment"><p>Fundamental problem in motion planning with numerous real-world -->
+				<!-- applications</p></li> -->
+				<li><p>CMP has been extensively studied over the last four decades by
+				researchers in <span class="highlight-text-red">computational geometry, artificial intelligence and
+					robotics</span></p></li>
+								<li class="fragment"><p>Annual workshops affiliated with the top AI conferences (e.g.,
+				AAAI, IJCAI) dedicated to CMP</p></li>
+				<li class="fragment"><p>Posed as The Symposium on Computational Geometry (SoCG 2021)
+				Challenge</p></li>
+				<li class="fragment"><p>Many algorithms, heuristics, websites, benchmarks, etc, dedicated
+				to CMP</p></li>
+				</ul>
+				</div>
+				</section>
+				<section>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Background</span>	
+					</h3>
+					<p>Many settings/variants:</p>
+				<ul>
+				<li class="fragment"><p><span class="highlight-text-green">Combinatorial</span>: grids, subgrids and graphs</p></li>
+				<li class="fragment"><p><span class="highlight-text-green">Geometric</span>: Euclidean plane w/o obstacles (robots are geometric
+				shapes)</p></li>
+				<li class="fragment"><p>Different conflict notions, stay/dissapear on target ...</p></li>
+				<li class="fragment"><p>Labelled/unlabelled, sliding/translation</p></li>
+				</ul></li>
+				<p class="fragment">Most of the settings are NP-hard even on very restricted instances such as grids and trees. 
+					<!-- and some, such as Rush Hour, are even PSPACE-hard -->
+</p>
+
+				</section>
+<!-- 
+				<section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Background</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p>CMP has been extensively studied over the last four decades by
+				researchers in <span class="highlight-text-red">computational geometry, artificial intelligence and
+					robotics</span></p></li>
+				<li class="fragment"><p>Many settings/variants:</p>
+				<ul>
+				<li class="fragment"><p><span class="highlight-text-green">Combinatorial</span>: grids, subgrids and graphs</p></li>
+				<li class="fragment"><p><span class="highlight-text-green">Geometric</span>: Euclidean plane w/o obstacles (robots are geometric
+				shapes)</p></li>
+				<li class="fragment"><p>Labelled/unlabelled, sliding/translation</p></li>
+				</ul></li>
+				</ul>
+				</div>
+				</section> -->
+				<!-- <section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Significance</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p>Fundamental problem in motion planning with numerous real-world
+				applications</p></li>
+				<li class="fragment"><p>Annual workshops affiliated with the top AI conferences (e.g.,
+				AAAI, IJCAI) dedicated to CMP</p></li>
+				<li class="fragment"><p>Posed as The Symposium on Computational Geometry (SoCG 2021)
+				Challenge</p></li>
+				<li class="fragment"><p>Many algorithms, heuristics, websites, benchmarks, etc, dedicated
+				to CMP</p></li>
+				</ul>
+				</div>
+				</section> -->
+				<!-- <section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Literature Review: The Combinatorial Setting</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p>The feasibility was shown to be decidable in polynomial time on
+				general graphs by Kornhauser, Miller, and Spirakis (1984)</p></li>
+				<li class="fragment"><p>NP-hard w.r.t. minimizing the travel length (1980) by Ratner and
+				Warmuth</p></li>
+				<li class="fragment"><p>Demaine et al. (2019) showed the strongly NP-hardness
+				w.r.t. minimizing the makespan and gave a constant-ratio approximation
+				algorithm</p></li>
+				</ul>
+				</div>
+				</section>
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Literature Review: The Geometric Setting</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p>Motion takes place in the Euclidean plane, where agents are
+				modelled as geometric shapes</p></li>
+				<li class="fragment"><p>Move: sliding (along a continuous curve) or translation (along a
+				straight line)</p></li>
+				<li class="fragment"><p>Most works pertains to feasibility or to minimizing the total
+				number of moves</p></li>
+				</ul>
+				</div>
+				</section>
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Literature Review: The Geometric Setting</span>	
+					</h3>
+					<ul>
+					<li><p> PSPACE-hard for most rectangles with no obstacles
+					 (Hearn and Demaine, 2002)</p></li>
+					<li class="fragment"><p>NP-complete for unit disks with no obstacles
+					(Dumitrescu and Jiang, 2009)</p></li>
+					</ul>
+					</div>
+					</section>	 -->
+
+				<section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">A Parameterized Complexity Primer</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p>A parameterized problem <span class="math inline">\(Q\)</span> is
+				<span><em class="highlight-text-green">fixed-parameter tractable</em></span> (FPT) if it can be solved
+				in time <span class="math inline highlight-text-green">\(f(\kappa) \cdot |I|^{{\mathcal
+				O}(1)}\)</span>, where <span class="math inline">\(f\)</span> is a
+				computable function, <span class="math inline">\(\kappa\)</span> is the
+				parameter(s), and <span class="math inline">\(|I|\)</span> is the input
+				instance size.</p></li>
+				<li class="fragment"><p><em class="highlight-text-red">para-NP-hard</em>: NP-hard for a constant value of the
+				parameter</p></li>
+				</ul>
+				</div>
+				</section>
+								 <section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Few definitions</span>	
+					</h3>
+
+
+				<ul>
+				<li class="fragment"><p><span class="math inline">\(G\)</span>: a graph.</p></li>
+				<li class="fragment"><p><span class="math inline">\(\{R_i \mid i \in [k]\}\)</span>: a
+				set of robots that will move on <span
+				class="math inline">\(G\)</span>.</p></li>
+				<li class="fragment"><p><span class="math inline">\(R_i\)</span>, <span
+				class="math inline">\(i \in [k]\)</span>, is associated with a <span class="highlight-text-green">starting
+				vertex</span> <span class="math inline">\(s_i\)</span> and a <span class="highlight-text-green">destination
+				vertex</span> <span class="math inline">\(t_i\)</span>.</p></li>
+				<li class="fragment">We refer to vertices in $\{s_i, t_i \mid i\in [k]\}$ as <span class="highlight-text-red">terminals.</span></li>
+				<!-- <li class="fragment"><p>At each time step, a robot may either stay at the vertex it is
+				currently on, or move to an adjacent vertex, and robots may move
+				simultaneously</p></li> -->
+				</ul>
+				</div>
+				</section>
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">A Few Definitions</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p><span class="highlight-text-red">A route <span class="math inline">\(W_i\)</span> </span> for <span
+				class="math inline">\(R_i\)</span> is a “walk” in <span
+				class="math inline">\(G\)</span>, with the exception that consecutive
+				vertices in <span class="math inline">\(W_i\)</span> may be
+				identical.</p></li>
+				<li class="fragment"><span class="highlight-text-red">The length</span> of a route $W_i=(v_1, \ldots, v_\ell)$ is $|\{j\mid v_j\neq v_{j+1}\}|$.</li>
+				<li class="fragment"><p>Two routes <em class="highlight-text-red">conflict</em> if the corresponding robots are at
+				<span class="highlight-text-green">the same vertex</span> at the end of a time step, or go through <span class="highlight-text-green">the same edge</span>
+				(in opposite directions) during the same time step.</p></li>
+				</ul>
+				</div>
+				</section>
+				
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">A Few Definitions</span>	
+					</h3>
+					<ul>
+					<li><p>A <em class="highlight-text-red">schedule</em> <span
+					class="math inline">\(\mathcal{S}\)</span> for the robots is a set of
+					routes <span class="math inline">\(W_i, i \in [k]\)</span>, during a
+					time interval <span class="math inline">\([0, t]\)</span>, that are
+					pairwise non-conflicting.</p></li>
+					<li class="fragment"><p><em class="highlight-text-red">total energy</em>: The sum of the route lengths.</p></li>
+					</ul>
+					</div>
+					<div class="fragment">
+<span><strong>Question:</strong></span> Is there a schedule for <span
+class="math inline">robots</span> of total energy at most <span
+class="math inline">\(\ell\)</span>?</p>
+
+					</div>
+					
+				</section>
+				<!-- <section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">A Summary of Results</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p>CMP is FPT parameterized by the number of robots <span
+				class="math inline">\(k\)</span>, w.r.t. either of the two targets:
+				makespan and total travel length</p></li>
+				<li class="fragment"><p>CMP is para-NP-hard parameterized by the makespan: CMP remains
+				NP-hard for a constant makespan</p></li>
+				<li class="fragment"><p>Bounded-length vertex and edge disjoint paths problems on grids
+				are NP-hard</p></li>
+				</ul>
+				</div>
+				</section> -->
+				<section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Main Result</span>	
+					</h3>
+
+					<div class="theorem">
+				<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem:</span> CMP is FPT parameterized by $k$ on graphs induced by <span class="highlight-text-green">discretized simple polygons</span>.</blockquote>
+				</div>
+				<div style="text-align: center;">
+					<img data-id="discretized_polygon" src="figures/discretized_polygon.svg" height="400px" alt="A discretization of a polygon.">
+				</div>
+				</section>
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Main Result</span>	
+					</h3>
+					<p>Main ingredients of the proof:</p>
+					<ul>
+						<li class="fragment">Initial pre-processing.</li>
+						<li class="fragment">Decomposition of graph $G$ into sectors.</li>
+						<li class="fragment">A <span class="highlight-text-blue">flattening</span> of parts of sectors that are &OpenCurlyDoubleQuote;too far&CloseCurlyDoubleQuote;.</li>
+						<li class="fragment">A <span class="highlight-text-blue">weaving</span> reduction that replaces large grid subgraphs with vertex-disjoint paths.</li>
+						<li class="fragment">Show that resulting graph has bounded <span class="highlight-text-red">treewidth</span> and apply known algorithm.</li>
+					</ul>
+					</div>
+				</section>
+
+				<section data-auto-animate>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Initial pre-processing</span>	
+					</h3>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem (EGK, SoCG'23):</span> Given instance of CMP on full rectangular grid, there is an optimal schedule, where each robot makes at most $k^{\mathcal{O}(k^2)}$ turns.</blockquote>
+					</div>
+					<div class="theorem fragment">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem (DEGKR, ICALP'24):</span> An instance of CMP can be reduced in FPT time to an equivalent instance in which $\ell \le \sum_{i \in [k]}$dist$(s_i, t_i) + c \cdot k^5$, for some constant $c > 0$.</blockquote>
+					</div>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Initial pre-processing</span>	
+					</h3>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">We can assume that :</span> 
+							<!-- If $\mathcal{I}$ is a YES-instance of CMP, then there is a solution to $\mathcal{I}$ satisfying the following: -->
+<ul>
+	<li class="fragment"> No robot $R_i$ has travels more than <span class="highlight-text-green">$\lambda = ck^5$</span> beyond shortest $s_i$-$t_i$ path. </li>
+	<li class="fragment"> For each robot $R_i$  and for each rectangle (i.e., full rectangular grid) $B$ in $G$, the number of turns that $R_i$ makes in $B$ plus the number of vertices in $B$ at which it waits
+    is at most <span class="highlight-text-green">$\mu=k^{\mathcal{O}(k^2)}$</span>. </li>
+</ul></blockquote>
+					</div>
+
+					</div>
+				</section>
+
+				<section data-auto-animate="">
+					<div class="frame">
+						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+						<p>Each vertex is associated with a <span class="highlight-text-red">bend vector</span>, recording for every terminal and each directional axis d the minimum number of bends on any shortest path from the terminal to that vertex along $d$. </p>
+					</div>
+				</section>
+
+				<section data-auto-animate="">
+					<div class="frame">
+						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+
+
+						<div style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/bend_vectors.svg" height="400px" alt="Illustration of the bend vector definition.">
+
+							<p>The bend vector of the vertex $v$ is $(2, 1, 4, 3, 3, 4)$.</p>
+						</div>
+				</div>
+				</section>
+				<section data-auto-animate="">
+					<div class="frame">
+						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+
+						<ul>
+							<li>Connected subgraphs whose vertices share the same bend vector form a <span class="highlight-text-red">sector</span> (an equivalence class).</li>
+							<li class="fragment">Sectors partition the graph into regions whose vertices have same turn requirements to reach all terminals. </li>
+							<li class="fragment">The sector graph $\Gamma$ has vertices corresponding to sectors and edges representing adjacencies between them. </li>
+						</ul>
+				</div>
+				</section>
+
+				<section data-auto-animate="">
+					<div class="frame">
+						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+
+						<ul>
+							<li>Each nontrivial sector contains a canonical <span class="highlight-text-red">baseline</span>: a straight path from which the entire sector can be reached via monotone straight extensions.</li>
+							<li class="fragment">Based on the baselines present, sectors can be classified into a small taxonomy. 
+								<ol>
+									<li class="fragment"><span class="highlight-text-red"><b>Histogram sectors</b></span>: a single baseline</li>
+									<li class="fragment"><span class="highlight-text-red"><b>Staircase sectors</b></span>: two orthogonal baselines</li>
+									<li class="fragment"><span class="highlight-text-red"><b>Rectangle sectors</b></span>: two parallel baselines forming a full subgrid</li>
+								</ol>
+</li>
+						</ul>
+				</div>
+				</section>
+				<section data-auto-animate="">
+					<div class="frame">
+						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+
+
+						<div style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/sectors_example.svg" height="550px" alt="Illustration of sectors.">
+						</div>
+				</div>
+				</section>
+				<section data-auto-animate="">
+					<div class="frame">
+						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+
+
+						<div style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/sectors_example.svg" height="350px" alt="Illustration of sectors.">
+							<img data-id="discretized_polygon" src="figures/sector_graph_example.svg" height="200px" alt="Illustration of sectors.">
+						</div>
+				</div>
+				</section>
+				<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Reducing Histograms</span>	
+					</h3>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> For any terminal $t$ and a vertex $v$ in a sector $S$, there is a shortest $t$-$v$ path that intersects a baseline of $S$.</blockquote>
+					</div>
+					<div class="fragment" style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/histogram_reduction.svg" height="350px" alt="Histogram reduction: we can remove all vertices at distance at least $\lambda/2$ from the baseline.">
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Reducing Staircase</span>	
+					</h3>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> There exists an optimal solution that does not visit any vertex in a staircase sector at distance at least $(k+1)(\lambda+1)$ from a baseline.</blockquote>
+					</div>
+					<div style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/staircase_rerouting.svg" height="350px" alt="Rerouting staicase.">
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Reducing Staircase</span>	
+					</h3>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> There exists an optimal solution that does not visit any vertex in a staircase sector at distance at least $(k+1)(\lambda+1)$ from a baseline.</blockquote>
+					</div>
+					<div style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/staircase_reduction.svg" height="350px" alt="Rerouting staicase.">
+						</div>
+					</div>
+				</section>
+
+
+								<section data-auto-animate>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Reducing rectangle</span>	
+					</h3>
+					<p>Recall: </p>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">We can assume that :</span> 
+							<!-- If $\mathcal{I}$ is a YES-instance of CMP, then there is a solution to $\mathcal{I}$ satisfying the following: -->
+<ul>
+	<li class="fragment"> No robot $R_i$ has travels more than <span class="highlight-text-green">$\lambda = ck^5$</span> beyond shortest $s_i$-$t_i$ path. </li>
+	<li class="fragment"> For each robot $R_i$ and for each rectangle, the number of turns that $R_i$ makes in $B$ plus the number of vertices in $B$ at which it waits
+    is at most <span class="highlight-text-green">$\mu=k^{\mathcal{O}(k^2)}$</span>. </li>
+</ul></blockquote>
+					</div>
+
+					</div>
+				</section>
+				<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Reducing Rectangle</span>	
+					</h3>
+
+					<p>Let the <span class="highlight-text-red">second frame</span> $S^*$ of sector $S$ be the subgraph of $S$ obtained by removing the top, bottom, left, and right $ (k+1)(\mu^2+\mu)$ rows and columns. </p>
+					<div class="theorem fragment">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> If $\mathcal{I}$ is YES-instance of CMP, then there is optimal solution in which every robot enter second frame at most once and never turns or waits inside.</blockquote>
+					</div>
+
+					<p class="fragment">We prove the lemma in two steps.</p>
+					</div>
+				</section>
+
+								<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Reducing Rectangle</span>	
+					</h3>
+					We first reroute all robots that do not enter and leave in the same direction outside of larger <span class="highlight-text-red">first frame</span>.
+					
+					<div style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/first_frame_rerouting.svg" height="450px" alt="Rerouting staicase.">
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Reducing Rectangle</span>	
+					</h3>
+					<p>Then we shift all remaining turns and waiting points inside of second frame to the first frame.</p>
+					<div style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/second_frame_shifting.svg" height="430px" alt="Rerouting staicase.">
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Reducing Rectangle</span>	
+					</h3>
+					<div class="theorem">
+We replace all internal vertices in the second frame and with degree-2 <span class="highlight-text-red">weaving paths</span>.
+					</div>
+					<div style="text-align: center;">
+							<img data-id="discretized_polygon" src="figures/rectangle_reduction.svg" height="430px" alt="Rerouting staicase.">
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Treewidth</span>	
+					</h3><ul>
+  <li class="fragment">most dominant structural parameter</li>
+
+  <li class="fragment">
+    based on graphs, but has many applications in diverse areas (via graph representations):
+    <ul>
+      <li><span class="highlight-text-blue">CSP, SAT, ASP, Social Choice...</span></li>
+    </ul>
+  </li>
+
+  <li class="fragment">
+    measures how "tree-like" the graph is
+    <ul>
+      <li>many problems become easier on tree-like graphs</li>
+    </ul>
+  </li>
+</ul>
+
+    <img class="fragment" src="figures/treewidth_examples.svg" style="width:90%;" alt="Treewidth examples">
+
+	</div>
+	</section>
+	<section data-auto-animate>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Treewidth</span>	
+					</h3><ul>
+  <p>
+    To determine the treewidth, we decompose the graph into (non-disjoint) parts,
+    called <span class="highlight-text-red"><em>bags</em></span>, that are connected in a tree-like fashion.
+  </p>
+  <div style="text-align: center;">
+      <img src="figures/tree_decomposition.svg" style="width:70%;" alt="Treewidth examples">
+	<small>
+	By <a href="//commons.wikimedia.org/wiki/User:David_Eppstein" class="mw-redirect" title="User:David Eppstein">David Eppstein</a> - <span class="int-own-work" lang="en">Own work</span>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=3011976">Link</a>
+	</small>
+
+	</div>
+	</div>
+	</section>
+	<!-- <section data-auto-animate>
+		<div class="frame">
+			<h3 data-id="title" class="frametitle">
+				<span data-id="title-span">Treewidth</span>
+			</h3>
+<p data-id="td_intro" style="width: 100%;">
+  A <span class="highlight-text-red">tree-decomposition \(\mathcal{T}\)</span>
+  of \(G\) is
+  <span class="textcl">\((T, \mathcal{X}=\{X_t\}_{t\in V(T)})\)</span>,
+  where <span class="textcl">\(T\) is a tree</span> and
+  <span class="textcl">\(X_t \subseteq V(G)\)</span> for all \(t\),
+  such that:
+</p>
+
+<ul>
+  <li class="fragment">
+    <strong>(T1)</strong>
+    \(
+      \bigcup_{t\in V(T)} X_t = V(G)
+    \)
+  </li>
+
+  <li class="fragment">
+    <strong>(T2)</strong>
+    for every \(u \in V(G)\), the set
+    \(
+      T_u = \{\,t \in V(T) : u \in X_t\,\}
+    \)
+    induces a connected subtree of \(T\)
+    (<em>monotonicity</em>).
+  </li>
+
+  <li class="fragment">
+    <strong>(T3)</strong>
+    for each \(uv \in E(G)\) there exists
+    \(t \in V(T)\) such that
+    \(u,v \in X_t\).
+  </li>
+</ul>
+
+<p class="fragment">
+  We call vertices of \(T\)
+  <span class="textcl">nodes</span>
+  and sets \(X_t\)
+  <span class="textcl">bags</span>.
+</p>
+
+		</div>
+	</section>
+
+	<section data-auto-animate>
+		<div class="frame">
+			<h3 data-id="title" class="frametitle">
+				<span data-id="title-span">Treewidth</span>
+			</h3>
+<p data-id="td_intro" style="width: 100%;">
+  A <span class="highlight-text-red">tree-decomposition \(\mathcal{T}\)</span>
+  of \(G\) is
+  <span class="textcl">\((T, \mathcal{X}=\{X_t\}_{t\in V(T)})\)</span>,
+  where <span class="textcl">\(T\) is a tree</span> and
+  <span class="textcl">\(X_t \subseteq V(G)\)</span> for all \(t\),
+  such that:
+</p>
+
+<p>
+  The <span class="highlight-text-red">width</span> of \(\mathcal{T}\) is
+  \(
+    \max_{t\in V(T)} \bigl(|X_t|-1\bigr)
+  \)
+  and the <span class="highlight-text-red">treewidth</span> of \(G\) is the minimum
+  width over all tree-decompositions of \(G\).
+</p>
+		</div>
+	</section> -->
+				<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Treewidth</span>	
+					</h3>
+                             					<div class="theorem fragment">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem (DEGKR, ICALP'24):</span> CMP is fixed-parameter tractable parameterized by $k$ + treewidth.</blockquote>
+					</div>
+
+					</div>
+				</section>
+								<section>
+					<div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Bounding treewidth</span>	
+					</h3>
+					<p>We bound treewidth in two steps.</p>
+						<ul>
+							<li class="fragment">Show that treewidth of the sector graph.</li>
+							<li class="fragment">Expand tree-decomposition of (part of) sector graph to tree-decomposition.</li>
+						</ul>
+
+						  <div class="fragment" style="text-align: center;">
+      <img src="figures/tw_important_vertices.svg" style="width:90%;" alt="Treewidth examples">
+
+	</div>
+
+					</div>
+				</section>
+				<section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Future Directions</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p>Is CMP on subgrids, or more generally planar graphs,
+				FPT? (by $k$ w.r.t either energy of makespan)</p></li>
+				<li class="fragment"><p>Is minimizing makespan FPT by $k$+treewidth?</p></li>
+				<li class="fragment"><p>Study the FPT of CMP in the Euclidean plane, where the robots are
+				disks/rectangles? (Recently Kanj and Parsa gave FPT for rectagles with axis-parallel translations)</p></li>
+				<li class="fragment"><p>Implementation of the FPT algorithms</p></li>
+				</ul>
+				</div>
+				</section>
+
+		</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="../reveal.js/plugin/math/math.js"></script>
+		<script src="../reveal.js/plugin/chalkboard/plugin.js"></script>
+		<script src="../reveal.js/plugin/customcontrols/plugin.js"></script>
+		<script src="../personalized/reveal_init.js"></script>
+		
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+			<div id="header">
+				<div id="header-left" aria-hidden="true"><small></small></div>
+				<div id="header-right" aria-hidden="true"><small></small>
+					<!-- <a id="theme-button" href="#" onclick="toggle_css_file()"> -->
+					  </label>
+					<!-- </a> -->
+					</div>
+				<div id="footer-left" aria-hidden="true"><small>Coordinated Motion Planning is FPT on Discretized Simple Polygons </small></div>
+			</div>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+			// 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+			var header = $('#header').html();
+			if ( window.location.search.match( /print-pdf/gi ) ) {
+				Reveal.addEventListener( 'ready', function( event ) {
+					$('.slide-background').append(header);
+				});
+			}
+			else {
+				$('div.reveal').append(header);
+		   }
+		</script>
+
+
+
+<!-- SVG definitions used by pointer: change colours using CSS at top of file! -->
+	<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+		<symbol id="ring-svg" viewBox="0 0 290 290" preserveAspectRatio="xMidYMid meet">
+			<ellipse rx="70" ry="70" stroke="var(--ringstroke,#ff0)" fill="none" stroke-width="20" transform="translate(145,145)"/>
+		</symbol>
+		<symbol id="finger-svg" viewBox="0 0 290 290" preserveAspectRatio="xMidYMid meet">
+			<g transform="translate(186.8,205.9) rotate(36) translate(-86.4,-47.2)">
+				<path d="M170.8 68.7l1.9-50c0-12.7-5.1-6-13-9c-7.5-8.5-35.4-15-59.5-3.7l-69.7 1.7c-17 0-17 24 0 24l51.1-1.4c13.1 22.7 15.6 54.8 39 58.2c12.8 .2 13.6 2.7 32.1-11.8c11-1.8 18.5 1 18-8Z" stroke="var(--fingerstroke,#000)" fill="var(--fingerfill,#ff0)" stroke-width="5" stroke-linecap="square"/>
+				<rect width="58.1" height="23.7" stroke="var(--fingerstroke,#000)" fill="var(--fingerfill,#ff0)" rx="12" stroke-width="5" transform="translate(105,30.1) rotate(-20) translate(-45.5,-11.5)"/>
+				<rect width="55.4" height="21" stroke="var(--fingerstroke,#000)" fill="var(--fingerfill,#ff0)" rx="12" stroke-width="5" transform="translate(115.8,51.1) rotate(-20) translate(-45.5,-11.5)"/>
+				<rect width="25.1" height="34.7" fill="var(--fingerfill,#ff0)" rx="12" transform="translate(123.9,24.2) rotate(-45) translate(-12.6,-14.4)"/><ellipse rx="10" ry="10" fill="var(--fingerfill,#ff0)" transform="translate(95.2,45.3) rotate(-36)"/>
+				<ellipse rx="17.1" ry="10.8" fill="var(--fingerfill,#ff0)" transform="translate(94.6,24.2) rotate(-36) translate(7.1,.8)"/><rect width="39.2" height="21" stroke="var(--fingerstroke,#000)" fill="var(--fingerfill,#ff0)" rx="12" stroke-width="5" transform="translate(133.7,65.9) rotate(-24) translate(-45.5,-11.5)"/>
+				<path d="M105.8 3.7c-11 10-15.5 16-20.7 21.8c-5.2 5.9-2 13.5-0.3 20.2c5.5 22.5 25.5 18.5 23 4c-1.3-7.1-5.1-12.8 3-18c5.5-3.5 6-4.5 6 6c3.5 5 14.5 12 28 5" stroke="var(--fingerstroke,#000)" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="bevel"/>
+			</g>
+		</symbol>
+	</svg> 
+	
+	<script src="../feeblepoint2-main/feeblepoint.js" type="text/javascript"></script>
+	</body>
+</html>

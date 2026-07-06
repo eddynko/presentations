@@ -1,0 +1,179 @@
+/* 1. Style header/footer <div> so they are positioned as desired. */
+#header-left {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+#header-right {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+#footer-left {
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+}
+
+.reveal section {
+    text-align: left;
+}
+.reveal .frametitle {
+    /* color: rgb(36, 36, 119); */
+    text-align: center;
+}
+.reveal .subtitle {
+    text-align: center;
+    margin-top: -0.6cm;
+}
+.reveal .center-text {
+    /* color: rgb(36, 36, 119); */
+    text-align: center;
+}
+.highlight-text-blue { 
+    color: #0072b2;
+    /* text-decoration: underline; */
+
+}
+.highlight-text-blue-underline { 
+    color: #0072b2;
+    text-decoration: underline;
+
+}
+.highlight-text-red { 
+    color: #C74000;
+    /* text-decoration: underline; */
+    font-style: italic; 
+}
+.highlight-text-green { 
+    color: #00825F;
+    /* text-decoration: underline; */
+    font-style: italic; 
+}
+
+.reveal .truth-table {
+    border-collapse: collapse;
+    border: none;
+    /* margin-left: 5cm; */
+    /* margin-right: auto; */
+}
+.reveal .truth-table th{
+    border-bottom: 5px solid;
+    border-right: 1px solid;
+}
+.reveal .truth-table tr th:last-child{
+    border-right: none;
+}
+.reveal .truth-table td{
+    border-bottom: none;
+    border-right: 1px solid;
+}
+.reveal .truth-table tr td:last-child{
+    border-right: none;
+}
+
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    /* background-color: DodgerBlue; */
+}
+
+/* .flex-container > div { */
+    /* background-color: #f1f1f1; */
+    /* width: 600px; */
+    /* margin: 10px; */
+    /* text-align: center; */
+    /* line-height: 75px; */
+    /* font-size: 30px; */
+/* } */
+
+/* ul.figure-list li{
+    position: relative; 
+    top: -30px;
+} */
+ul.figure-list img {
+    position: relative; 
+    /* top: 25px; */
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.coin-figure-margin {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.reveal blockquote {
+    width: 95%;
+    margin-top: 30px;
+}
+.no-border-table {
+    border: none;
+}
+.no-border-table td {
+    border: none;
+}
+
+.switch {	
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {display:none;}
+
+/*orange
+-------------------------
+*/
+.slider-orange {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d55e00;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider-orange:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider-orange {
+    background-color: rgb(213,94,0);
+}
+
+input:focus + .slider-orange {
+    box-shadow: 0 0 1px rgb(213,94,0);
+}
+
+input:checked + .slider-orange:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider-orange.round {
+    border-radius: 34px;
+}
+
+.slider-orange.round:before {
+    border-radius: 50%;
+}
+

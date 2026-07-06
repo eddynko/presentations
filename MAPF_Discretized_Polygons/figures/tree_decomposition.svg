@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="209.40956mm"
+   height="85.989586mm"
+   viewBox="0 0 209.40956 85.989586"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="Tree_decomposition.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.61229019"
+     inkscape:cx="408.30313"
+     inkscape:cy="254.78115"
+     inkscape:window-width="1280"
+     inkscape:window-height="730"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-0.04921159,-10.690448)">
+    <line
+       fill="none"
+       stroke="#000000"
+       stroke-width="0.529167"
+       x1="34.841919"
+       y1="22.775389"
+       x2="34.841919"
+       y2="79.925392"
+       id="line1" />
+    <rect
+       x="-8.532877"
+       y="-81.15303"
+       transform="rotate(135)"
+       fill="none"
+       stroke="#000000"
+       stroke-width="0.529162"
+       width="40.410748"
+       height="40.410748"
+       id="rect1" />
+    <rect
+       x="6.2669201"
+       y="22.775389"
+       fill="none"
+       stroke="#000000"
+       stroke-width="0.529167"
+       width="57.149998"
+       height="57.149998"
+       id="rect2" />
+    <circle
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="0.529167"
+       cx="34.841919"
+       cy="22.775389"
+       r="5.953125"
+       id="circle2" />
+    <circle
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="0.529167"
+       cx="6.2669201"
+       cy="22.775389"
+       r="5.953125"
+       id="circle3" />
+    <circle
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="0.529167"
+       cx="6.2669201"
+       cy="51.350388"
+       r="5.953125"
+       id="circle4" />
+    <circle
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="0.529167"
+       cx="6.2669201"
+       cy="79.925392"
+       r="5.953125"
+       id="circle5" />
+    <circle
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="0.529167"
+       cx="34.841919"
+       cy="79.925392"
+       r="5.953125"
+       id="circle6" />
+    <circle
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="0.529167"
+       cx="63.416912"
+       cy="79.925392"
+       r="5.953125"
+       id="circle7" />
+    <circle
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="0.529167"
+       cx="63.416912"
+       cy="51.350388"
+       r="5.953125"
+       id="circle8" />
+    <circle
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="0.529167"
+       cx="63.416912"
+       cy="22.775389"
+       r="5.953125"
+       id="circle9" />
+    <text
+       fill="#5110d2"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text9"
+       x="3.0919175"
+       y="25.685804"
+       style="stroke-width:0.264583">A</text>
+    <g
+       id="g11"
+       transform="matrix(0.26458333,0,0,0.26458333,80.738977,-74.902259)">
+
+	<g
+   id="g9">
+		<path
+   fill="#ffffff"
+   d="m 432,540 c -10.014,0 -19.384,2.735 -27.422,7.485 L 370.515,513.423 C 375.265,505.384 378,496.014 378,486 c 0,-10.014 -2.735,-19.384 -7.485,-27.423 l 34.062,-34.062 c 8.039,4.75 17.409,7.485 27.423,7.485 29.823,0 54,-24.177 54,-54 0,-29.823 -24.177,-54 -54,-54 -29.823,0 -54,24.177 -54,54 0,10.014 2.735,19.384 7.485,27.423 l -34.062,34.062 C 343.385,434.735 334.014,432 324,432 c -25.162,0 -46.304,17.21 -52.299,40.5 H 223.299 C 217.304,449.21 196.162,432 171,432 c -10.013,0 -19.383,2.735 -27.422,7.485 L 109.515,405.423 C 114.265,397.384 117,388.014 117,378 117,348.177 92.823,324 63,324 33.177,324 9,348.177 9,378 c 0,29.823 24.177,54 54,54 10.014,0 19.384,-2.736 27.423,-7.485 l 34.062,34.062 C 119.736,466.615 117,475.986 117,486 c 0,8.576 2.008,16.681 5.566,23.883 L 86.883,545.567 C 79.681,542.009 71.577,540 63,540 33.177,540 9,564.177 9,594 c 0,29.823 24.177,54 54,54 29.823,0 54,-24.177 54,-54 0,-11.429 -3.56,-22.021 -9.619,-30.749 l 32.87,-32.87 c 8.728,6.058 19.32,9.619 30.749,9.619 25.162,0 46.304,-17.21 52.299,-40.5 h 48.402 c 5.995,23.29 27.137,40.5 52.299,40.5 10.014,0 19.385,-2.736 27.424,-7.485 l 34.062,34.062 C 380.736,574.615 378,583.986 378,594 c 0,29.823 24.177,54 54,54 29.823,0 54,-24.177 54,-54 0,-29.823 -24.177,-54 -54,-54 z"
+   id="path9" />
+
+	</g>
+
+	<g
+   id="g10">
+		<path
+   fill="none"
+   stroke="#000000"
+   d="m 432,540 c -10.014,0 -19.384,2.735 -27.422,7.485 L 370.515,513.423 C 375.265,505.384 378,496.014 378,486 c 0,-10.014 -2.735,-19.384 -7.485,-27.423 l 34.062,-34.062 c 8.039,4.75 17.409,7.485 27.423,7.485 29.823,0 54,-24.177 54,-54 0,-29.823 -24.177,-54 -54,-54 -29.823,0 -54,24.177 -54,54 0,10.014 2.735,19.384 7.485,27.423 l -34.062,34.062 C 343.385,434.735 334.014,432 324,432 c -25.162,0 -46.304,17.21 -52.299,40.5 H 223.299 C 217.304,449.21 196.162,432 171,432 c -10.013,0 -19.383,2.735 -27.422,7.485 L 109.515,405.423 C 114.265,397.384 117,388.014 117,378 117,348.177 92.823,324 63,324 33.177,324 9,348.177 9,378 c 0,29.823 24.177,54 54,54 10.014,0 19.384,-2.736 27.423,-7.485 l 34.062,34.062 C 119.736,466.615 117,475.986 117,486 c 0,8.576 2.008,16.681 5.566,23.883 L 86.883,545.567 C 79.681,542.009 71.577,540 63,540 33.177,540 9,564.177 9,594 c 0,29.823 24.177,54 54,54 29.823,0 54,-24.177 54,-54 0,-11.429 -3.56,-22.021 -9.619,-30.749 l 32.87,-32.87 c 8.728,6.058 19.32,9.619 30.749,9.619 25.162,0 46.304,-17.21 52.299,-40.5 h 48.402 c 5.995,23.29 27.137,40.5 52.299,40.5 10.014,0 19.385,-2.736 27.424,-7.485 l 34.062,34.062 C 380.736,574.615 378,583.986 378,594 c 0,29.823 24.177,54 54,54 29.823,0 54,-24.177 54,-54 0,-29.823 -24.177,-54 -54,-54 z"
+   id="path10" />
+
+	</g>
+
+</g>
+    <text
+       fill="#bf0000"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text11"
+       x="99.788971"
+       y="22.728998"
+       style="stroke-width:0.264583">B</text>
+    <text
+       fill="#bf0000"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text12"
+       x="31.931501"
+       y="25.685804"
+       style="stroke-width:0.264583">B</text>
+    <text
+       fill="#5110d2"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text13"
+       x="87.882721"
+       y="22.199823"
+       style="stroke-width:0.264583">A</text>
+    <text
+       fill="#476b00"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text14"
+       x="91.851471"
+       y="34.899822"
+       style="stroke-width:0.264583">C</text>
+    <text
+       fill="#476b00"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text15"
+       x="3.0919175"
+       y="54.260803"
+       style="stroke-width:0.264583">C</text>
+    <text
+       fill="#476b00"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text16"
+       x="116.45773"
+       y="56.066494"
+       style="stroke-width:0.264583">C</text>
+    <text
+       fill="#476b00"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text17"
+       x="91.586891"
+       y="77.762321"
+       style="stroke-width:0.264583">C</text>
+    <text
+       fill="#bf0000"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text18"
+       x="125.98273"
+       y="51.303997"
+       style="stroke-width:0.264583">B</text>
+    <text
+       fill="#bf0000"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text19"
+       x="159.32022"
+       y="51.303997"
+       style="stroke-width:0.264583">B</text>
+    <text
+       fill="#bf0000"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text20"
+       x="185.51396"
+       y="25.110239"
+       style="stroke-width:0.264583">B</text>
+    <text
+       fill="#5a3000"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text21"
+       x="90.263977"
+       y="89.403984"
+       style="stroke-width:0.264583">D</text>
+    <text
+       fill="#5a3000"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text22"
+       x="3.0919175"
+       y="82.835808"
+       style="stroke-width:0.264583">D</text>
+    <text
+       fill="#0092c8"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text23"
+       x="101.90564"
+       y="87.022728"
+       style="stroke-width:0.264583">E</text>
+    <text
+       fill="#0092c8"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text24"
+       x="125.98273"
+       y="60.828991"
+       style="stroke-width:0.264583">E</text>
+    <text
+       fill="#0092c8"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text25"
+       x="31.931501"
+       y="82.835808"
+       style="stroke-width:0.264583">E</text>
+    <text
+       fill="#0092c8"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text26"
+       x="159.32022"
+       y="60.828991"
+       style="stroke-width:0.264583">E</text>
+    <text
+       fill="#0092c8"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text27"
+       x="185.51396"
+       y="84.641487"
+       style="stroke-width:0.264583">E</text>
+    <text
+       fill="#007d7d"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text28"
+       x="197.42021"
+       y="22.728998"
+       style="stroke-width:0.264583">F</text>
+    <text
+       fill="#007d7d"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text29"
+       x="60.5065"
+       y="25.685804"
+       style="stroke-width:0.264583">F</text>
+    <text
+       fill="#a210d2"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text30"
+       x="193.18689"
+       y="33.841488"
+       style="stroke-width:0.264583">G</text>
+    <text
+       fill="#a210d2"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text31"
+       x="60.5065"
+       y="54.260803"
+       style="stroke-width:0.264583">G</text>
+    <text
+       fill="#a210d2"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text32"
+       x="168.84521"
+       y="56.066494"
+       style="stroke-width:0.264583">G</text>
+    <text
+       fill="#a210d2"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text33"
+       x="192.65771"
+       y="77.497734"
+       style="stroke-width:0.264583">G</text>
+    <text
+       fill="#ca5c00"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text34"
+       x="197.42021"
+       y="89.403984"
+       style="stroke-width:0.264583">H</text>
+    <text
+       fill="#ca5c00"
+       font-family="'Liberation Serif'"
+       font-style="normal"
+       font-size="9.525px"
+       id="text35"
+       x="60.5065"
+       y="82.835808"
+       style="stroke-width:0.264583">H</text>
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#476b00"
+       stroke-width="1.05833"
+       d="m 99.083333,31.901564 c 0,0 6.526477,2.82178 11.288977,7.67265 4.7625,4.85087 6.79106,9.17231 6.79106,9.17231"
+       id="path35" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#476b00"
+       stroke-width="1.05833"
+       d="m 117.42796,56.419444 c 0,0 -2.11667,5.02708 -6.96728,9.78958 -4.8506,4.7625 -11.288976,6.70296 -11.288976,6.70296"
+       id="path36" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#bf0000"
+       stroke-width="1.05833"
+       d="m 104.02231,23.787584 c 0,0 1.41102,8.02587 8.02561,14.46398 6.61458,6.43811 12.34731,7.84913 12.34731,7.84913"
+       id="path37" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#bf0000"
+       stroke-width="1.05833"
+       d="m 132.86189,49.804864 c 0,0 5.73273,2.82257 13.31728,2.7342 7.58454,-0.0884 12.61189,-2.55773 12.61189,-2.55773"
+       id="path38" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#bf0000"
+       stroke-width="1.05833"
+       d="m 165.7586,46.894444 c 0,0 8.55477,-2.20504 14.11102,-8.20208 5.55625,-5.99705 7.67292,-12.25894 7.67292,-12.25894"
+       id="path39" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#0092c8"
+       stroke-width="1.05833"
+       d="m 106.58004,79.349824 c 0,0 -1.4994,-5.11519 5.46814,-11.64167 6.96754,-6.52648 13.49375,-9.43689 13.49375,-9.43689"
+       id="path40" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#0092c8"
+       stroke-width="1.05833"
+       d="m 132.24462,56.242704 c 0,0 6.96727,-1.85209 13.93481,-1.67561 6.96754,0.17648 12.43542,1.85208 12.43542,1.85208"
+       id="path41" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#0092c8"
+       stroke-width="1.05833"
+       d="m 166.02318,59.065014 c 0,0 7.8494,3.35148 13.49375,9.525 5.64436,6.17352 6.61459,8.55477 6.61459,8.55477"
+       id="path42" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#a210d2"
+       stroke-width="1.05833"
+       d="m 192.74583,32.959634 c 0,0 -5.64435,0.70564 -10.40685,6.35 -4.7625,5.64436 -6.52648,9.17205 -6.52648,9.17205"
+       id="path43" />
+    <path
+       opacity="0.4"
+       fill="none"
+       stroke="#a210d2"
+       stroke-width="1.05833"
+       d="m 175.28334,56.772134 c 0,0 0.88212,5.29167 5.99731,10.40686 5.11518,5.11518 10.58333,5.64435 10.58333,5.64435"
+       id="path44" />
+    <rect
+       fill="none"
+       width="130.96875"
+       height="173.83125"
+       id="rect44"
+       x="39.6875"
+       y="61.647919"
+       style="stroke-width:0.264583" />
+  </g>
+</svg>
