@@ -27,14 +27,13 @@
 					<!-- <h3>CS1860: Mathematical Structures</h3> -->
 					<h2 class="frametitle">Coordinated Motion Planning is FPT on Discretized Simple Polygons</h2>
 					<div style="text-align: center;">
-						Eduard Eiben 
-						
-						<p>Royal Holloway, University of London</p>
-						<p>Joint work with 
-							Argyris Deligkas (Royal Holloway, University of London), 
-							 Robert Ganian (TU-Vienna)
-							 and Iyad Kanj (School of Computing, DePaul University)
-							<!-- , M.S. Ramanujan (University of Warwick) -->
+						<div style="margin-top: -10px;">Argyris Deligkas<sup>1</sup>, <span class="highlight-text-blue">Eduard Eiben</span><sup>1</sup>, 
+						Robert Ganian<sup>2</sup>, and Iyad Kanj<sup>3</sup></div>
+						<div>
+						<small><sup style="vertical-align: super;">1</sup>Department of Computer Science, Royal Holloway, University of London, Egham, UK</small>
+						<small><sup style="vertical-align: super;">2</sup>Algorithms and Complexity Group, TU Wien, Vienna, Austria</small>
+						<small><sup style="vertical-align: super;">3</sup>School of Computing, DePaul University, Chicago, USA</small>
+					</div>
 						</p>
 					</div>
 					
@@ -57,19 +56,18 @@
 				<li class="fragment"><p>Robots can move simultaneously (in parallel)</p></li>
 				</ol>
 				</div>
-				</section><section><div class="frame">
+				</section>
+				<!-- <section><div class="frame">
 					
 				<video width="1024" height="576" controls>
 					<source src="video/robotex.mp4" type="video/mp4">
-					<!-- <source src="movie.ogg" type="video/ogg"> -->
+					<source src="movie.ogg" type="video/ogg">
 				  Your browser does not support the video tag.
 				  </video>
 				  <small>Source: <a href="https://www.youtube.com/watch?v=4sEVX4mPuto">https://www.youtube.com/watch?v=4sEVX4mPuto</a></small>
 			</div>
-
-			
-
 				</section>
+				 -->
 				<section data-auto-animate><div class="frame">
 					<h3 data-id="title" class="frametitle">Coordinated Motion Planning (CMP)
 					</h3>
@@ -233,6 +231,38 @@
 </p>
 
 				</section>
+				
+				<section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">A Parameterized Complexity Primer</span>	
+					</h3>
+				<ul>
+				<li class="fragment"><p>A parameterized problem <span class="math inline">\(Q\)</span> is
+				<span><em class="highlight-text-green">fixed-parameter tractable</em></span> (FPT) if it can be solved
+				in time <span class="math inline highlight-text-green">\(f(\kappa) \cdot |I|^{{\mathcal
+				O}(1)}\)</span>, where <span class="math inline">\(f\)</span> is a
+				computable function, <span class="math inline">\(\kappa\)</span> is the
+				parameter(s), and <span class="math inline">\(|I|\)</span> is the input
+				instance size.</p></li>
+				<!-- <li class="fragment"><p><em class="highlight-text-red">para-NP-hard</em>: NP-hard for a constant value of the
+				parameter</p></li> -->
+				</ul>
+				</div>
+				</section>
+				<section>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">(Some) Previous Results</span>	
+					</h3>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem (EGK, SoCG'23):</span> Given instance of CMP on full rectangular grid, there is an optimal schedule, where each robot makes at most $k^{\mathcal{O}(k^2)}$ turns.</blockquote>
+					</div>
+					<div class="theorem fragment">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem (DEGKR, ICALP'24):</span> An instance of CMP can be reduced in FPT time to an equivalent instance in which $\ell \le \sum_{i \in [k]}$dist$(s_i, t_i) + c \cdot k^5$, for some constant $c > 0$.</blockquote>
+					</div>
+					<div class="theorem fragment">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem (DEGKR, ICALP'24):</span> CMP is fixed-parameter tractable parameterized by $k$ + treewidth.</blockquote>
+					</div>
+				</section>
 <!-- 
 				<section><div class="frame">
 					<h3 data-id="title" class="frametitle"> 
@@ -311,24 +341,7 @@
 					</div>
 					</section>	 -->
 
-				<section><div class="frame">
-					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">A Parameterized Complexity Primer</span>	
-					</h3>
-				<ul>
-				<li class="fragment"><p>A parameterized problem <span class="math inline">\(Q\)</span> is
-				<span><em class="highlight-text-green">fixed-parameter tractable</em></span> (FPT) if it can be solved
-				in time <span class="math inline highlight-text-green">\(f(\kappa) \cdot |I|^{{\mathcal
-				O}(1)}\)</span>, where <span class="math inline">\(f\)</span> is a
-				computable function, <span class="math inline">\(\kappa\)</span> is the
-				parameter(s), and <span class="math inline">\(|I|\)</span> is the input
-				instance size.</p></li>
-				<li class="fragment"><p><em class="highlight-text-red">para-NP-hard</em>: NP-hard for a constant value of the
-				parameter</p></li>
-				</ul>
-				</div>
-				</section>
-								 <section><div class="frame">
+								 <!-- <section><div class="frame">
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">Few definitions</span>	
 					</h3>
@@ -344,9 +357,6 @@
 				vertex</span> <span class="math inline">\(s_i\)</span> and a <span class="highlight-text-green">destination
 				vertex</span> <span class="math inline">\(t_i\)</span>.</p></li>
 				<li class="fragment">We refer to vertices in $\{s_i, t_i \mid i\in [k]\}$ as <span class="highlight-text-red">terminals.</span></li>
-				<!-- <li class="fragment"><p>At each time step, a robot may either stay at the vertex it is
-				currently on, or move to an adjacent vertex, and robots may move
-				simultaneously</p></li> -->
 				</ul>
 				</div>
 				</section>
@@ -388,7 +398,7 @@ class="math inline">\(\ell\)</span>?</p>
 
 					</div>
 					
-				</section>
+				</section> -->
 				<!-- <section><div class="frame">
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">A Summary of Results</span>	
@@ -422,20 +432,20 @@ class="math inline">\(\ell\)</span>?</p>
 						<span data-id="title-span">Main Result</span>	
 					</h3>
 					<p>Main ingredients of the proof:</p>
-					<ul>
+					<ol>
 						<li class="fragment">Initial pre-processing.</li>
 						<li class="fragment">Decomposition of graph $G$ into sectors.</li>
 						<li class="fragment">A <span class="highlight-text-blue">flattening</span> of parts of sectors that are &OpenCurlyDoubleQuote;too far&CloseCurlyDoubleQuote;.</li>
 						<li class="fragment">A <span class="highlight-text-blue">weaving</span> reduction that replaces large grid subgraphs with vertex-disjoint paths.</li>
 						<li class="fragment">Show that resulting graph has bounded <span class="highlight-text-red">treewidth</span> and apply known algorithm.</li>
-					</ul>
+					</ol>
 					</div>
 				</section>
 
-				<section data-auto-animate>
+				<!-- <section data-auto-animate>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Initial pre-processing</span>	
+						<span data-id="title-span">1. Initial pre-processing</span>	
 					</h3>
 					<div class="theorem">
 						<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem (EGK, SoCG'23):</span> Given instance of CMP on full rectangular grid, there is an optimal schedule, where each robot makes at most $k^{\mathcal{O}(k^2)}$ turns.</blockquote>
@@ -444,11 +454,11 @@ class="math inline">\(\ell\)</span>?</p>
 						<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem (DEGKR, ICALP'24):</span> An instance of CMP can be reduced in FPT time to an equivalent instance in which $\ell \le \sum_{i \in [k]}$dist$(s_i, t_i) + c \cdot k^5$, for some constant $c > 0$.</blockquote>
 					</div>
 					</div>
-				</section>
+				</section> -->
 				<section data-auto-animate>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Initial pre-processing</span>	
+						<span data-id="title-span">1. Initial pre-processing</span>	
 					</h3>
 					<div class="theorem">
 						<blockquote style="width: 90%;"> <span class="highlight-text-red">We can assume that :</span> 
@@ -463,28 +473,28 @@ class="math inline">\(\ell\)</span>?</p>
 					</div>
 				</section>
 
-				<section data-auto-animate="">
+				<!-- <section data-auto-animate="">
 					<div class="frame">
 						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
 						<p>Each vertex is associated with a <span class="highlight-text-red">bend vector</span>, recording for every terminal and each directional axis d the minimum number of bends on any shortest path from the terminal to that vertex along $d$. </p>
 					</div>
-				</section>
+				</section> -->
 
 				<section data-auto-animate="">
 					<div class="frame">
-						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+						<h3 data-id="title" class="frametitle">2. Sectors and the sector graph</h3>
 
 
 						<div style="text-align: center;">
 							<img data-id="discretized_polygon" src="figures/bend_vectors.svg" height="400px" alt="Illustration of the bend vector definition.">
 
-							<p>The bend vector of the vertex $v$ is $(2, 1, 4, 3, 3, 4)$.</p>
+							<p>The <span class="highlight-text-red">bend vector</span> of the vertex $v$ is $(2, 1, 4, 3, 3, 4)$.</p>
 						</div>
 				</div>
 				</section>
 				<section data-auto-animate="">
 					<div class="frame">
-						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+						<h3 data-id="title" class="frametitle">2. Sectors and the sector graph</h3>
 
 						<ul>
 							<li>Connected subgraphs whose vertices share the same bend vector form a <span class="highlight-text-red">sector</span> (an equivalence class).</li>
@@ -496,7 +506,7 @@ class="math inline">\(\ell\)</span>?</p>
 
 				<section data-auto-animate="">
 					<div class="frame">
-						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+						<h3 data-id="title" class="frametitle">2. Sectors and the sector graph</h3>
 
 						<ul>
 							<li>Each nontrivial sector contains a canonical <span class="highlight-text-red">baseline</span>: a straight path from which the entire sector can be reached via monotone straight extensions.</li>
@@ -512,7 +522,7 @@ class="math inline">\(\ell\)</span>?</p>
 				</section>
 				<section data-auto-animate="">
 					<div class="frame">
-						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+						<h3 data-id="title" class="frametitle">2. Sectors and the sector graph</h3>
 
 
 						<div style="text-align: center;">
@@ -522,7 +532,7 @@ class="math inline">\(\ell\)</span>?</p>
 				</section>
 				<section data-auto-animate="">
 					<div class="frame">
-						<h3 data-id="title" class="frametitle">Sectors and the sector graph</h3>
+						<h3 data-id="title" class="frametitle">2. Sectors and the sector graph</h3>
 
 
 						<div style="text-align: center;">
@@ -534,17 +544,17 @@ class="math inline">\(\ell\)</span>?</p>
 				<section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Reducing Histograms</span>	
+						<span data-id="title-span">3. Flattening Histograms</span>	
 					</h3>
 					<div class="theorem">
 						<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> For any terminal $t$ and a vertex $v$ in a sector $S$, there is a shortest $t$-$v$ path that intersects a baseline of $S$.</blockquote>
 					</div>
-					<div class="fragment" style="text-align: center;">
+					<div style="text-align: center;">
 							<img data-id="discretized_polygon" src="figures/histogram_reduction.svg" height="350px" alt="Histogram reduction: we can remove all vertices at distance at least $\lambda/2$ from the baseline.">
 						</div>
 					</div>
 				</section>
-				<section>
+				<!-- <section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">Reducing Staircase</span>	
@@ -556,12 +566,12 @@ class="math inline">\(\ell\)</span>?</p>
 							<img data-id="discretized_polygon" src="figures/staircase_rerouting.svg" height="350px" alt="Rerouting staicase.">
 						</div>
 					</div>
-				</section>
+				</section> -->
 
 				<section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Reducing Staircase</span>	
+						<span data-id="title-span">3. Flattening Staircase</span>	
 					</h3>
 					<div class="theorem">
 						<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> There exists an optimal solution that does not visit any vertex in a staircase sector at distance at least $(k+1)(\lambda+1)$ from a baseline.</blockquote>
@@ -573,15 +583,14 @@ class="math inline">\(\ell\)</span>?</p>
 				</section>
 
 
-								<section data-auto-animate>
+								<!-- <section data-auto-animate>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Reducing rectangle</span>	
+						<span data-id="title-span">4. weaving rectangle</span>	
 					</h3>
 					<p>Recall: </p>
 					<div class="theorem">
 						<blockquote style="width: 90%;"> <span class="highlight-text-red">We can assume that :</span> 
-							<!-- If $\mathcal{I}$ is a YES-instance of CMP, then there is a solution to $\mathcal{I}$ satisfying the following: -->
 <ul>
 	<li class="fragment"> No robot $R_i$ has travels more than <span class="highlight-text-green">$\lambda = ck^5$</span> beyond shortest $s_i$-$t_i$ path. </li>
 	<li class="fragment"> For each robot $R_i$ and for each rectangle, the number of turns that $R_i$ makes in $B$ plus the number of vertices in $B$ at which it waits
@@ -590,11 +599,11 @@ class="math inline">\(\ell\)</span>?</p>
 					</div>
 
 					</div>
-				</section>
+				</section> -->
 				<section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Reducing Rectangle</span>	
+						<span data-id="title-span">4. weaving Rectangle</span>	
 					</h3>
 
 					<p>Let the <span class="highlight-text-red">second frame</span> $S^*$ of sector $S$ be the subgraph of $S$ obtained by removing the top, bottom, left, and right $ (k+1)(\mu^2+\mu)$ rows and columns. </p>
@@ -602,11 +611,11 @@ class="math inline">\(\ell\)</span>?</p>
 						<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> If $\mathcal{I}$ is YES-instance of CMP, then there is optimal solution in which every robot enter second frame at most once and never turns or waits inside.</blockquote>
 					</div>
 
-					<p class="fragment">We prove the lemma in two steps.</p>
+					<!-- <p class="fragment">We prove the lemma in two steps.</p> -->
 					</div>
 				</section>
 
-								<section>
+								<!-- <section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">Reducing Rectangle</span>	
@@ -628,11 +637,11 @@ class="math inline">\(\ell\)</span>?</p>
 							<img data-id="discretized_polygon" src="figures/second_frame_shifting.svg" height="430px" alt="Rerouting staicase.">
 						</div>
 					</div>
-				</section>
+				</section> -->
 				<section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Reducing Rectangle</span>	
+						<span data-id="title-span">4. weaving Rectangle</span>	
 					</h3>
 					<div class="theorem">
 We replace all internal vertices in the second frame and with degree-2 <span class="highlight-text-red">weaving paths</span>.
@@ -642,7 +651,7 @@ We replace all internal vertices in the second frame and with degree-2 <span cla
 						</div>
 					</div>
 				</section>
-				<section>
+				<!-- <section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">Treewidth</span>	
@@ -685,7 +694,7 @@ We replace all internal vertices in the second frame and with degree-2 <span cla
 
 	</div>
 	</div>
-	</section>
+	</section> -->
 	<!-- <section data-auto-animate>
 		<div class="frame">
 			<h3 data-id="title" class="frametitle">
@@ -760,7 +769,7 @@ We replace all internal vertices in the second frame and with degree-2 <span cla
 </p>
 		</div>
 	</section> -->
-				<section>
+				<!-- <section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">Treewidth</span>	
@@ -770,11 +779,11 @@ We replace all internal vertices in the second frame and with degree-2 <span cla
 					</div>
 
 					</div>
-				</section>
+				</section> -->
 								<section>
 					<div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Bounding treewidth</span>	
+						<span data-id="title-span">5. Bounding treewidth</span>	
 					</h3>
 					<p>We bound treewidth in two steps.</p>
 						<ul>
