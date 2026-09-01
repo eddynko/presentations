@@ -51,44 +51,127 @@
 				<section data-auto-animate><div class="frame">
 					<h3 data-id="title" class="frametitle">Transient Multiagent Pathfinding (TMAPF)
 					</h3>
-				<!-- <p><span>Problem: Coordinated Motion Planning (CMP)</span></p> -->
 				<ul>
-				<li class="fragment"><p><span class="highlight-text-blue"><b>Input</b></span>: <span class="math inline">\(k\)</span> agents placed on a
-				graph $G$. <span class="fragment"> An agent $R_i$ has starting position $s_i$ and destination $t_i$.</span></p></li>
+				<li class="fragment"><p><span class="highlight-text-blue"><b>Input</b></span>: A graph $G$, integers $k,\lambda\in \mathbb{N}$, set of agents $\mathcal{R}=\{R_i=(s_i,t_i)\mid i\in[k]\}$. 
+					<!-- <span class="fragment"> Each agent $R_i$ has starting position $s_i$ and destination $t_i$.</span></p></li> -->
 				<li class="fragment"><p><span class="highlight-text-blue"><b>Dynamics</b></span>: In each time step, each agent may 
 					<ul>
-						<li class="fragment">enter the graph at $s_i$,</li>
+						<li class="fragment">enter the graph at starting vertex $s_i$,</li>
 						<li class="fragment">move along an edge without collision, </li>
-						<li class="fragment">stay at its current position</li>
-						<li class="fragment">leave graph at $t_i$</li>
+						<li class="fragment">stay at its current position,</li>
+						<li class="fragment">leave graph at destination vertex $t_i$.</li>
 					</ul>
 				</li>
-				<li class="fragment"><p><span class="highlight-text-blue"><b>Goal</b></span>: Find a schedule for the agents that minimizes <em class="highlight-text-red">Task-completion time (makespan).</em> </p></li>
+				<li class="fragment"><p><span class="highlight-text-blue"><b>Question</b></span>: Is there a schedule for the agents with <em class="highlight-text-red">Task-completion time (makespan)</em> at most $\lambda$. </p></li>
 				</li>
 				</ul>
 				</div>
 				</section>
-				<section data-auto-animate data-auto-animate-duration=2.0>
+				<section data-auto-animate>
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">TMAPF: Example</span>	
 					</h3>
 					<div style="text-align: center;">
-						<img data-id="corridor" src="figures/mapf_example.svg" height="500px" alt="Running example of mapf">
+						<img data-id="corridor" src="figures/tmapf_example_0.svg" height="300px" alt="Running example of mapf">
 						
 					</div>				
 				</section>
 
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">TMAPF: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_1.svg" height="300px" alt="Running example of mapf">
+						
+						<div> Time step: 0</div>
+					</div>				
+				</section>
 
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">TMAPF: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_2.svg" height="300px" alt="Running example of mapf">
+						
+						<div> Time step: 1</div>
+					</div>				
+				</section>				
+
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">TMAPF: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_3.svg" height="300px" alt="Running example of mapf">
+						
+						<div> Time step: 2</div>
+					</div>				
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">TMAPF: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_4.svg" height="300px" alt="Running example of mapf">
+						
+						<div> Time step: 3</div>
+					</div>				
+				</section>				
+
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">TMAPF: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_5.svg" height="300px" alt="Running example of mapf">
+						
+						<div> Time step: 4</div>
+					</div>				
+				</section>				
+
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">TMAPF: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_6.svg" height="300px" alt="Running example of mapf">
+						
+						<div> Time step: 5</div>
+					</div>				
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">TMAPF: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_7.svg" height="300px" alt="Running example of mapf">
+						
+						<div> Time step: 6</div>
+					</div>				
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">TMAPF: Example</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_8.svg" height="300px" alt="Running example of mapf">
+						
+						<div> Time step: 7</div>
+					</div>				
+				</section>
 
 				<section><div class="frame">
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">Background</span>	
 					</h3>
 				<ul>
-				<!-- <li class="fragment"><p>Fundamental problem in motion planning with numerous real-world -->
-				<!-- applications</p></li> -->
-				<li><p>(T)MAPF has been extensively studied over the last four decades by
-				researchers in <span class="highlight-text-red">computational geometry, artificial intelligence and
+				<li><p>Variants of (T)MAPF has been extensively studied by
+				researchers in <span class="highlight-text-red">computational geometry, artificial intelligence, and
 					robotics</span></p></li>
 								<li class="fragment"><p>Annual workshops affiliated with the top AI conferences (e.g.,
 				AAAI, IJCAI) dedicated to MAPF</p></li>
@@ -99,23 +182,7 @@
 				</ul>
 				</div>
 				</section>
-				<section>
-					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">Background</span>	
-					</h3>
-					<p>Many settings/variants:</p>
-				<ul>
-				<li class="fragment"><p><span class="highlight-text-green">Combinatorial</span>: grids, subgrids and graphs</p></li>
-				<li class="fragment"><p><span class="highlight-text-green">Geometric</span>: Euclidean plane w/o obstacles (robots are geometric
-				shapes)</p></li>
-				<li class="fragment"><p>Different conflict notions, stay/disappear on target ...</p></li>
-				<li class="fragment"><p>Labelled/unlabelled, sliding/translation</p></li>
-				</ul></li>
-				<p class="fragment">Most of the settings are NP-hard even on very restricted instances such as grids and trees. 
-					<!-- and some, such as Rush Hour, are even PSPACE-hard -->
-</p>
 
-				</section>
 				<section><div class="frame">
 					<h3 data-id="title" class="frametitle"> 
 						<span data-id="title-span">Makespan upper bound</span>	
@@ -123,9 +190,31 @@
 					<div class="theorem">
 				<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> Makespan of any TMAPF istance is at most $1+\sum_{i\in [k]}dist(s_i,t_i)$ .</blockquote>
 					</div>
+					<p class="fragment highlight-text-blue"> Main Idea:</p>
+					<ul>
+						<li class="fragment">Schedule agents one by one; Next agent appears when previous reaches destination.</li>
+						<li class="fragment">With correct order, at most one time is previous destination and next start the same.</li>
+					</ul>
 					<!-- <p class="fragment"><span class="highlight-text-blue">Idea:</span> Navigate agents one by one, $i+1$-st agent appears in the same step as $i$-th dissapear, if possible.</p>
 					<p class="fragment"> We can order agents so there is only one consecutive pair, where it is not possible.</p> -->
 				</section>
+
+
+				<section><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Makespan upper bound</span>	
+					</h3>
+					<div class="theorem">
+				<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> Makespan of any TMAPF istance is at most $1+\sum_{i\in [k]}dist(s_i,t_i)$ .</blockquote>
+					</div>
+					<p class="highlight-text-green"> Question:</p>
+					<!-- <div class="center"></div> -->
+						<blockquote style="width: 90%;"> Can we efficiently find a solution $\zeta$ below this bound?</blockquote>
+				
+					<!-- <p class="fragment"><span class="highlight-text-blue">Idea:</span> Navigate agents one by one, $i+1$-st agent appears in the same step as $i$-th dissapear, if possible.</p>
+					<p class="fragment"> We can order agents so there is only one consecutive pair, where it is not possible.</p> -->
+				</section>
+
 
 				<section><div class="frame">
 					<h3 data-id="title" class="frametitle"> 
@@ -133,16 +222,99 @@
 					</h3>
 
 					<div class="theorem">
-				<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem:</span> .</blockquote>
+				<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem:</span> TMAPF is FPT by $k+\zeta$.</blockquote>
 				</div>
+				
+				<div class="theorem">
+				<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem:</span> TMAPF is W[1]-hard and XP by $k$.</blockquote>
+				</div>
+
+				<div class="theorem">
+				<blockquote style="width: 90%;"> <span class="highlight-text-red">Theorem:</span> TMAPF is W[1]-hard and XP by $\zeta$.</blockquote>
+				</div>
+
 				</section>
 
 				<section data-auto-animate><div class="frame">
 					<h3 data-id="title" class="frametitle"> 
-						<span data-id="title-span">FPT by $k+\zeta$</span>	
+						<span data-id="title-span">Time Expansion Graph</span>	
 					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_0.svg" height="300px" alt="Running example of mapf">
+					</div>	
+				</section>
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Time Expansion Graph</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/tmapf_example_0.svg" height="300px" alt="Running example of mapf">
+					</div>	
+				</section>
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Time Expansion Graph</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/single_time_step.svg" height="500px" alt="Running example of mapf">
+					</div>	
+				</section>
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Time Expansion Graph</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/time_expansion_graph.svg" height="500px" alt="Running example of mapf">
+					</div>	
+				</section>
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Time Expansion Graph</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/time_expansion_solution.svg" height="500px" alt="Running example of mapf">
+					</div>	
+				</section>
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Time Expansion Graph</span>	
+					</h3>
+					<div style="text-align: center;">
+						<img data-id="corridor" src="figures/time_expansion_solution.svg" height="350px" alt="Running example of mapf">
+					</div>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Observation:</span> TMAPF is equivalent to Disjoint Paths in Time Expansion DAG.</blockquote>
+					</div>	
+				</section>
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Time Expansion Graph</span>	
+					</h3>
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Observation:</span> TMAPF is equivalent to Disjoint Paths in Time Expansion DAG.</blockquote>
+					</div>	
+					<div class="theorem">
+						<blockquote style="width: 90%;"> <span class="highlight-text-red">Lemma:</span> TMAPF can be solved in $2^{k\lambda}n^{\mathcal{O}(1)}$ time.</blockquote>
+					</div>	
 
 				</section>
+
+
+				<section data-auto-animate><div class="frame">
+					<h3 data-id="title" class="frametitle"> 
+						<span data-id="title-span">Main Result Outline</span>	
+					</h3>
+TODO: Win-win case distinction 1) if $\sum_{i\in[k]}dist(s_i, t_i)$ bounded -> FPT by $k+\lambda$. 
+	  if two agents with large distance go in "same direction", we can safe $\zeta$ -> at most two agents have large distance.
+	  Use XP algorithm to find optimal for two large agents, shedule rest one by one during run of this pair, when both agents are far.  
+				</section>
+
 
 
 				<section><div class="frame">
@@ -178,7 +350,7 @@
 					  </label>
 					<!-- </a> -->
 					</div>
-				<div id="footer-left" aria-hidden="true"><small>Coordinated Motion Planning is FPT on Discretized Simple Polygons </small></div>
+				<div id="footer-left" aria-hidden="true"><small>Routing Multiple Agents Below the Sum of Distances</small></div>
 			</div>
 		</div>
 		
